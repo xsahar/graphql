@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Section -->
+        <div id="login-section" class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>Welcome</h1>
+                    <p>Sign in to access your coding metrics</p>
+                </div>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="usernameOrEmail" placeholder="Username or Email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    
+                    <div id="errorMessage" class="error-message"></div>
+                    
+                    <button type="submit" class="btn login-btn">
+                        <span>login</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Profile Section -->
+        <div id="profile-section" style="display: none;">
+            <header class="content-header">
+                <h1>Welcome, <span id="username">Developer</span></h1>
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </header>
+            
+            <div class="dashboard">
+                <!-- Overview Section -->
+                <section id="overview" class="dashboard-section">
+                    <h2>Developer Profile</h2>
+                    <div class="cards-container">
+                        <div id="xp" class="user-info-grid">
+                            <!-- User info will be populated here -->
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Statistics Section -->
+                <section id="statistics" class="dashboard-section">
+                    <h2>Performance Metrics</h2>
+                    <div class="charts-container">
+                        <!-- Audit Ratio Chart -->
+                        <div class="chart-card">
+                            <div id="auditGraph" class="chart"></div>
+                        </div>
+                        
+                        <!-- XP by Project Chart -->
+                        <div class="chart-card">
+                            <div id="xpGraph" class="chart"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Application JavaScript files -->
+    <script src="js/utils.js"></script>
+    <script src="js/sessionManager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/graphql.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/authform.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
