@@ -7,7 +7,7 @@ function createSVG(width, height) {
 }
 
 // Draw audit ratio pie chart
-function drawAuditRatioPieChart(totalUp, totalDown) {
+function drawAuditRatioPieChart(totalUp, totalDown, auditRatio) {
     const container = document.getElementById('auditGraph');
     
     // Add null check
@@ -15,6 +15,9 @@ function drawAuditRatioPieChart(totalUp, totalDown) {
         console.warn('Audit Ratio Graph container not found in DOM');
         return;
     }
+    
+    // Format auditRatio to 1 decimal place
+    const formattedRatio = parseFloat(auditRatio).toFixed(1);
     
     let totalDoneInMB = (totalDown / 1000000).toFixed(2); 
     let totalReceivedInMB = (totalUp / 1000000).toFixed(2);
@@ -27,20 +30,6 @@ function drawAuditRatioPieChart(totalUp, totalDown) {
     
     const total = totalUp + totalDown || 1; // Prevent division by zero
     const upRatio = totalUp / total;
-    
-    // Calculate audit ratio CORRECTLY - ensure we're using the right formula
-    // For an audit ratio of 1.4, we need to make sure we're calculating it the right way
-    const auditRatio = totalUp > 0 && totalDown > 0 
-        ? ((totalDown > totalUp) ? (totalDown / totalUp) : (totalUp / totalDown)).toFixed(1) 
-        : '0.0';
-        
-    // For debug - remove later
-    console.log('Audit ratio calculation:', {
-        totalDown,
-        totalUp,
-        calculatedRatio: totalDown / totalUp,
-        formattedRatio: auditRatio
-    });
     
     // Calculate angles for the pie slices
     const upAngle = upRatio * 2 * Math.PI;
@@ -96,7 +85,7 @@ function drawAuditRatioPieChart(totalUp, totalDown) {
     ratioText.setAttribute("font-size", "24px");
     ratioText.setAttribute("font-weight", "bold");
     ratioText.setAttribute("fill", "#111827");
-    ratioText.textContent = auditRatio; // Display audit ratio instead of percentage
+    ratioText.textContent = formattedRatio; // Use the formatted value instead
     svg.appendChild(ratioText);
     
     // Add legend
@@ -333,7 +322,7 @@ async function drawGraphs(userData, totalXP) {
     try {
         // Only call each graph function if the container exists
         if (document.getElementById('auditGraph')) {
-            drawAuditRatioPieChart(userData.totalUp, userData.totalDown);
+            drawAuditRatioPieChart(userData.totalUp, userData.totalDown, userData.auditRatio);
         }
         
         if (document.getElementById('xpGraph') && userData.transactions) {
