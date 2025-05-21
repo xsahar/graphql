@@ -259,8 +259,8 @@ function drawXPByProjectGraph(transactions) {
         const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
         text.setAttribute("x", x + barWidth / 2);
         text.setAttribute("y", height - padding.bottom + 20);
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("transform", `rotate(-45, ${x + barWidth / 2}, ${height - padding.bottom + 20})`);
+        text.setAttribute("text-anchor", "straight");
+        text.setAttribute("transform", `rotate(45, ${x + barWidth / 2}, ${height - padding.bottom + 20})`);
         text.setAttribute("fill", "#111827");
         text.setAttribute("font-size", "12px");
         text.textContent = data.project;
