@@ -3,83 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+    <meta name="description" content="Developer portfolio and learning dashboard">
+    <title>Developer Portfolio</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <!-- Login Section -->
-        <div id="login-section" class="login-container">
+        <main id="login-section" class="login-container">
             <div class="login-card">
+                <div class="brand-mark"><i class="fas fa-code"></i></div>
+                <p class="eyebrow">Developer portfolio</p>
                 <div class="login-header">
-                    <h1>Welcome</h1>
-                    <p>Sign in to access your coding metrics</p>
+                    <h1>Welcome back</h1>
+                    <p>Sign in to access your coding journey and project metrics.</p>
                 </div>
-                
                 <form id="loginForm" class="login-form">
-                    <div class="input-group">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="usernameOrEmail" placeholder="Username or Email" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Password" required>
-                    </div>
-                    
-                    <div id="errorMessage" class="error-message"></div>
-                    
+                    <label class="input-group">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                        <span class="sr-only">Username or email</span>
+                        <input type="text" id="usernameOrEmail" placeholder="Username or email" autocomplete="username" required>
+                    </label>
+                    <label class="input-group">
+                        <i class="fas fa-lock" aria-hidden="true"></i>
+                        <span class="sr-only">Password</span>
+                        <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+                    </label>
+                    <div id="errorMessage" class="error-message" role="alert"></div>
                     <button type="submit" class="btn login-btn">
-                        <span>login</span>
-                        <i class="fas fa-arrow-right"></i>
+                        <span>Continue to portfolio</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </button>
                 </form>
             </div>
-        </div>
-        
-        <!-- Profile Section -->
-        <div id="profile-section" style="display: none;">
+        </main>
+
+        <div id="profile-section" hidden>
             <header class="content-header">
-                <h1>Welcome, <span id="username">Developer</span></h1>
+                <a class="brand" href="#overview" aria-label="Developer portfolio home">
+                    <span class="brand-mark small"><i class="fas fa-code"></i></span>
+                    <span>portfolio<span class="brand-dot">.</span></span>
+                </a>
+                <nav class="top-nav" aria-label="Main navigation">
+                    <a href="#overview">Overview</a>
+                    <a href="#statistics">Analytics</a>
+                    <a href="#toolkit">Toolkit</a>
+                </nav>
                 <button id="logoutBtn" class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
+                    <i class="fas fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                    <span>Sign out</span>
                 </button>
             </header>
-            
-            <div class="dashboard">
-                <!-- Overview Section -->
-                <section id="overview" class="dashboard-section">
-                    <h2>Developer Profile</h2>
-                    <div class="cards-container">
-                        <div id="xp" class="user-info-grid">
-                            <!-- User info will be populated here -->
+
+            <main class="dashboard">
+                <section id="overview" class="hero-section dashboard-section">
+                    <div class="hero-copy">
+                        <p class="eyebrow"><span class="status-dot"></span> Available for opportunities</p>
+                        <h1>Hi, I'm <span id="username">Developer</span><span class="accent">.</span></h1>
+                        <p class="hero-description">A curious developer building thoughtful digital experiences, learning through real projects, and turning complex problems into clean solutions.</p>
+                        <div class="hero-actions">
+                            <a class="primary-link" href="#statistics">Explore my work <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+                            <a id="githubLink" class="secondary-link" href="https://github.com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub profile</a>
                         </div>
                     </div>
+                    <div class="hero-badge" aria-hidden="true">
+                        <div class="orbit orbit-one"></div>
+                        <div class="orbit orbit-two"></div>
+                        <div class="hero-icon"><i class="fas fa-terminal"></i></div>
+                        <span class="hero-badge-label">build<br>learn<br>repeat</span>
+                    </div>
                 </section>
-                
-                <!-- Statistics Section -->
+
+                <section class="metrics-grid" aria-label="Profile highlights">
+                    <article class="metric-card metric-primary">
+                        <div class="metric-icon"><i class="fas fa-bolt"></i></div>
+                        <div><span class="metric-label">Total experience</span><strong id="totalXpMetric">—</strong><small>earned XP</small></div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-icon green"><i class="fas fa-chart-line"></i></div>
+                        <div><span class="metric-label">Audit ratio</span><strong id="auditMetric">—</strong><small>quality signal</small></div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-icon orange"><i class="fas fa-layer-group"></i></div>
+                        <div><span class="metric-label">Projects explored</span><strong id="projectMetric">—</strong><small>across the journey</small></div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-icon pink"><i class="fas fa-calendar-check"></i></div>
+                        <div><span class="metric-label">Profile</span><strong>Active</strong><small id="profileEmail">developer profile</small></div>
+                    </article>
+                </section>
+
+                <section id="toolkit" class="dashboard-section split-section">
+                    <div class="section-heading">
+                        <p class="eyebrow">About the developer</p>
+                        <h2>My toolkit</h2>
+                        <p>The technologies and concepts shaping my projects.</p>
+                    </div>
+                    <div id="languageList" class="language-list" aria-label="Technologies"></div>
+                </section>
+
+                <section id="projects" class="dashboard-section">
+                    <div class="section-heading section-heading-row">
+                        <div>
+                            <p class="eyebrow">Selected work</p>
+                            <h2>Projects &amp; languages</h2>
+                        </div>
+                        <span class="section-note">Sourced from GitHub</span>
+                    </div>
+                    <div id="projectList" class="project-list">
+                        <p class="loading-state">Loading project portfolio...</p>
+                    </div>
+                </section>
+
                 <section id="statistics" class="dashboard-section">
-                    <h2>Performance Metrics</h2>
+                    <div class="section-heading section-heading-row">
+                        <div>
+                            <p class="eyebrow">Proof of progress</p>
+                            <h2>Work &amp; performance</h2>
+                        </div>
+                        <span class="section-note"><i class="fas fa-circle-info"></i> Live profile metrics</span>
+                    </div>
                     <div class="charts-container">
-                        <!-- Audit Ratio Chart -->
-                        <div class="chart-card">
-                            <div id="auditGraph" class="chart"></div>
-                        </div>
-                        
-                        <!-- XP by Project Chart -->
-                        <div class="chart-card">
-                            <div id="xpGraph" class="chart"></div>
-                        </div>
+                        <article class="chart-card"><div id="auditGraph" class="chart"></div></article>
+                        <article class="chart-card"><div id="xpGraph" class="chart"></div></article>
                     </div>
                 </section>
-            </div>
+
+                <section class="profile-details dashboard-section">
+                    <div class="section-heading">
+                        <p class="eyebrow">Profile snapshot</p>
+                        <h2>At a glance</h2>
+                    </div>
+                    <div id="xp" class="user-info-grid"></div>
+                </section>
+            </main>
+            <footer class="site-footer">Built with curiosity <span>✦</span> and a lot of code.</footer>
         </div>
     </div>
-    
-    <!-- Application JavaScript files -->
+
     <script src="js/utils.js"></script>
     <script src="js/sessionManager.js"></script>
     <script src="js/auth.js"></script>
