@@ -1,63 +1,80 @@
-# GraphQL Profile Dashboard
+# Developer Portfolio Dashboard
 
-A personal profile dashboard built with GraphQL and vanilla JavaScript that displays student information, performance metrics, and interactive data visualizations using SVG.
+<p align="center">
+  <strong>A modern, responsive developer portfolio powered by GraphQL.</strong><br>
+  Explore profile metrics, project progress, coding languages, and public GitHub work in one place.
+</p>
 
-## Features
+<p align="center">
+  <a href="https://xsahar.github.io/graphql/"><strong>View the live portfolio →</strong></a>
+</p>
 
-- **Secure Authentication**: Login with username/email and password using JWT
-- **Profile Information**: Display user details including username, email, and audit ratio
-- **XP Tracking**: Calculate and display total XP with proper formatting
-- **SVG Data Visualizations**: Interactive graphs showing:
-  - Audit ratio as a pie chart
-  - XP by project as a bar chart
-- **Responsive Design**: Clean modern UI with responsive layout
+## Why this project?
 
-## Technologies Used
+This dashboard turns learning data into a polished portfolio experience for sharing with companies and collaborators. It combines authenticated GraphQL metrics with a live overview of public GitHub repositories, so the profile reflects both progress and practical work.
 
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Authentication**: JWT with secure token management
-- **Data Fetching**: GraphQL API queries
-- **Data Visualization**: SVG-based interactive charts
-- **API Integration**: GraphQL endpoint integration
+## Highlights
 
-## Project Structure
+- **Portfolio-first profile** with a clear introduction, availability status, and GitHub link
+- **Live project showcase** that loads public repositories and links directly to each project
+- **Language overview** detected from the code in the project portfolio
+- **Learning metrics** including total XP, audit ratio, and project activity
+- **Interactive SVG charts** for audit performance and XP by project
+- **Secure authentication** using JWT sessions
+- **Responsive design** for desktop, tablet, and mobile
 
-- `index.html` - Main application page with both login and profile sections
-- `css/` - Styling for the application
-- `js/`
-  - `auth.js` - Authentication handling
-  - `authform.js` - Login form submission
-  - `charts.js` - SVG chart generation
-  - `graphql.js` - GraphQL query execution
-  - `main.js` - Main application initialization
-  - `profile.js` - Profile data handling
-  - `sessionManager.js` - JWT token management
-  - `utils.js` - Helper functions
+## Tech stack
 
-## How to Use
+| Area | Technology |
+| --- | --- |
+| Frontend | HTML5, CSS3, vanilla JavaScript |
+| Data layer | GraphQL |
+| Authentication | JWT and session management |
+| Visualizations | Native SVG |
+| Portfolio data | GitHub REST API |
+| Hosting | GitHub Pages |
 
-1. Open the application in your browser
-2. Log in with your credentials
-3. View your profile information and performance metrics
-4. Interact with the SVG charts to explore your data
-5. Log out when finished
+## Project structure
 
-## GraphQL Implementation
+```text
+.
+├── index.html              # Portfolio and login interface
+├── css/
+│   └── main.css            # Responsive visual system and layout
+└── js/
+    ├── auth.js             # Authentication state
+    ├── authform.js         # Login form handling
+    ├── charts.js           # SVG charts
+    ├── graphql.js          # GraphQL helpers
+    ├── main.js             # Application initialization
+    ├── profile.js          # Profile, projects, and languages
+    ├── sessionManager.js   # JWT session lifecycle
+    └── utils.js            # Shared formatting helpers
+```
 
-The application uses three types of GraphQL queries:
-- Basic queries to fetch user information
-- Nested queries to retrieve related data
-- Parameterized queries with arguments for filtering data
+## Run locally
 
-## Security Features
+Because the app uses browser modules, API requests, and authentication, serve it through a local web server rather than opening `index.html` directly:
 
-- JWT token validation and expiration handling
-- Secure authentication with error handling
-- Protected GraphQL queries with authorization headers
+```bash
+git clone https://github.com/xsahar/graphql.git
+cd graphql
+python3 -m http.server 8000
+```
 
-## Future Enhancements
+Then open [http://localhost:8000](http://localhost:8000).
 
-- Additional data visualizations
-- Timeline view of progress
-- Dark/light theme toggle
-- Performance optimization for larger datasets
+## Data and privacy
+
+The dashboard requests authenticated learning data only after sign-in. Public repository and language information is loaded from the GitHub API using the authenticated user's public profile. Do not commit credentials, tokens, or `.env` files.
+
+## Roadmap
+
+- Add project filtering by language
+- Add a timeline of recent activity
+- Add downloadable CV export
+- Add theme preferences
+
+## License
+
+This project is maintained as a personal portfolio and learning project.
